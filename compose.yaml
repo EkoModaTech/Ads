@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  ads:
+    build: .
+    hostname: ads
+    environment:
+      EUREKA_URL: ${EUREKA_URL}
+
+    
+  ads-qa:
+    build: .
+    hostname: ads
+    environment:
+      EUREKA_URL: ${EUREKA_URL_QA}
+  
+  
