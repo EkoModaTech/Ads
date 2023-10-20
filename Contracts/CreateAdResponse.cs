@@ -1,3 +1,5 @@
+using System;
+
 namespace FestivaNow.Ads.Contracts;
 public record CreateAdResponse (
     Guid Id,

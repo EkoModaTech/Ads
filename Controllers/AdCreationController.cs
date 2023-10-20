@@ -1,5 +1,6 @@
 using FestivaNow.Ads.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using RouteAttribute = Microsoft.AspNetCore.Components.RouteAttribute;
 
 namespace FestivaNow.Ads.Controllers;
 

@@ -1,16 +1,16 @@
 using FestivaNow.Ads.Services.Interfaces;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
+using RouteAttribute = Microsoft.AspNetCore.Components.RouteAttribute;
 
 namespace FestivaNow.Ads.Controllers;
 
 [ApiController]
-[Microsoft.AspNetCore.Mvc.Route("/ads")]
+[Route("/ads")]
 public class AdController : ControllerBase
 {
-
     [Inject]
-    public required IAdsService AdsService { get; set; }
+    public IAdsService AdsService { get; set; }
     
     [HttpGet]
     public IActionResult GetAd(){
