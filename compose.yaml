@@ -6,8 +6,9 @@ services:
     environment:
       EUREKA_URL: ${EUREKA_URL}
       REDIS_URL: ${REDIS_URL}
+      REDIS_PORT: ${REDIS_PORT}
       IP_HOST: ${IP_HOST}
-      PORT_HOST: ${PORT_HOST_QA}
+      PORT_HOST: ${PORT_HOST}
       
     ports:
       - "6666:8080"
@@ -18,7 +19,9 @@ services:
     environment:
       EUREKA_URL: ${EUREKA_URL_QA}
       REDIS_URL: ${REDIS_URL}
+      REDIS_PORT: ${REDIS_PORT_QA}
       IP_HOST: ${IP_HOST}
+      PORT_HOST: ${PORT_HOST_QA}
     ports:
       - "26666:8080"
   
