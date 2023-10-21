@@ -1,7 +1,5 @@
 using FestivaNow.Ads.Services.Interfaces;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
-using RouteAttribute = Microsoft.AspNetCore.Components.RouteAttribute;
 
 namespace FestivaNow.Ads.Controllers;
 
@@ -9,11 +7,15 @@ namespace FestivaNow.Ads.Controllers;
 [Route("/ads")]
 public class AdController : ControllerBase
 {
-    [Inject]
-    public IAdsService AdsService { get; set; }
+    private readonly IAdsService _adsService;
+
+    public AdController(IAdsService adsService){
+        _adsService = adsService;
+    }
     
     [HttpGet]
     public IActionResult GetAd(){
-        return Ok("ADSSSS");
+        var response = _adsService.GetAd();
+        return Ok(response);
     }
 }

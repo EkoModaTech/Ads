@@ -1,3 +1,6 @@
+using System;
+using FestivaNow.Ads.Services.Impl;
+using FestivaNow.Ads.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -30,6 +33,14 @@ namespace FestivaNow.Ads
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FestivaNow.Ads", Version = "v1" });
             });
+
+            //Set Config here, the dependency has a bug
+            //Configuration["Redis:Client:Host"] = "192.168.1.130";//Environment.GetEnvironmentVariable("REDIS_URL");
+            //Configuration["Redis:Client:Port"] = "6379";//Environment.GetEnvironmentVariable("REDIS_PORT");;
+            services.AddRedisConnectionMultiplexer(Configuration);
+
+            services.AddScoped<IAdsService, AdsService>();
+            services.AddScoped<IAdsCreationService, AdsCreationService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -41,6 +52,7 @@ namespace FestivaNow.Ads
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FestivaNow.Ads"));
             }
 
+            app.UseExceptionHandler("/error");
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseEndpoints(endpoints =>

@@ -16,6 +16,13 @@ namespace FestivaNow.Ads
             Host.CreateDefaultBuilder(args)
                 .AddPlaceholderResolver()
                 .ConfigureLogging((context, builder) => builder.AddDynamicConsole())
-                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>().ConfigureLogging((builderContext, loggingBuilder) =>
+                    {
+                        loggingBuilder.AddDynamicConsole();
+                    }
+                );
+                });
     }
 }
