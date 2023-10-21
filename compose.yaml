@@ -1,0 +1,20 @@
+version: '3.9'
+services:
+  ads:
+    build: .
+    hostname: ads
+    environment:
+      EUREKA_URL: ${EUREKA_URL}
+    ports:
+      - "6666:8080"
+
+    
+  ads-qa:
+    build: .
+    hostname: ads
+    environment:
+      EUREKA_URL: ${EUREKA_URL_QA}
+    ports:
+      - "26666:8080"
+  
+  
