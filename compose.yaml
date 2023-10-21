@@ -5,15 +5,20 @@ services:
     hostname: ads
     environment:
       EUREKA_URL: ${EUREKA_URL}
+      REDIS_URL: ${REDIS_URL}
+      IP_HOST: ${IP_HOST}
+      PORT_HOST: ${PORT_HOST_QA}
+      
     ports:
       - "6666:8080"
-
-    
+  
   ads-qa:
     build: .
     hostname: ads
     environment:
       EUREKA_URL: ${EUREKA_URL_QA}
+      REDIS_URL: ${REDIS_URL}
+      IP_HOST: ${IP_HOST}
     ports:
       - "26666:8080"
   
